@@ -10,11 +10,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'icalendar'
+gem 'factory_girl_rails'
 
 group :development, :test do
   gem 'foreman'
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'factory_girl_rails'
   gem 'shoulda'
   gem 'faker'
   gem 'ruby-progressbar'
