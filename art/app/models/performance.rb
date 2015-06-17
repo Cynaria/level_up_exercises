@@ -8,12 +8,7 @@ class Performance < ActiveRecord::Base
   scope :upcoming, -> { where("performed_on > ?", 1.month.ago).includes(:show) }
 
   def average_rating
-    return unless reviews.any?
-
-    total_rating = reviews.inject(0) do |total, review|
-      total + review.rating
-    end
-    total_rating / reviews.length
+    self.reviews.average(:rating)
   end
 
   def to_ical
