@@ -23,6 +23,7 @@ group :development, :test do
   gem 'ruby-progressbar'
   gem 'pry'
   gem 'rspec-collection_matchers'
+  gem 'rack-mini-profiler'
 end
 
 group :test do
