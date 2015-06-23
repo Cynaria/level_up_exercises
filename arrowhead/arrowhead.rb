@@ -17,18 +17,23 @@ class Arrowhead
 
   # FIXME: I don't have time to deal with this.
   def self.classify(region, shape)
-    if CLASSIFICATIONS.include? region
-      shapes = CLASSIFICATIONS[region]
-      if shapes.include? shape
-        arrowhead = shapes[shape]
-        "You have a(n) '#{arrowhead}' arrowhead. Probably priceless."
-      else
-        raise "Unknown shape value. Are you sure you know what you're talking about?"
-      end
-    else
-      raise "Unknown region, please provide a valid region."
+    shapes = CLASSIFICATIONS[region]
+
+    if !CLASSIFICATIONS.include?(region)
+      raise UnknownRegionError, "Unknown region, please provide a valid region."
     end
+
+    if !shapes.include?(shape)
+      raise UnknownShapeError, "Unknown shape value. Are you sure you know what you're talking about?"
+    end
+    
+    arrowhead = shapes[shape]
+    "You have a(n) '#{arrowhead}' arrowhead. Probably priceless."
   end
 end
 
+class UnknownShapeError < StandardError; end
+class UnknownRegionError < StandardError; end
+
 puts Arrowhead.classify(:northern_plains, :bifurcated)
+puts Arrowhead.classify(:ponies, :bifurcated)
