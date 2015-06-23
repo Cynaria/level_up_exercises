@@ -11,7 +11,7 @@ class Show < ActiveRecord::Base
   validates :theatre_company, presence: true
   validates :notes, presence: true
 
-  default_scope -> { order("name asc") }
+  scope :ascending, -> { order("name asc") }
 
   def self.trending(limit = 5)
     find(recently_reviewed(limit))

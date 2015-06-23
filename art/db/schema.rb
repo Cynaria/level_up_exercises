@@ -61,11 +61,6 @@ ActiveRecord::Schema.define(version: 20141023214703) do
     t.text     "notes"
   end
 
-  create_table "shows_performers", id: false, force: true do |t|
-    t.integer "show_id"
-    t.integer "performer_id"
-  end
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "username"

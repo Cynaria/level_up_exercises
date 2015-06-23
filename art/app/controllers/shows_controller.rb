@@ -4,7 +4,7 @@ class ShowsController < ApplicationController
   # GET /shows
   # GET /shows.json
   def index
-    @shows = Show.all
+    @shows = Show.all.select(:name, :description, :id).ascending
   end
 
   # GET /shows/1

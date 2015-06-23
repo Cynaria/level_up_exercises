@@ -10,16 +10,20 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'icalendar'
+gem 'newrelic_rpm'
+gem 'rails_12factor'
+
 
 group :development, :test do
+	gem 'factory_girl_rails'
+	gem 'faker'
   gem 'foreman'
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'factory_girl_rails'
   gem 'shoulda'
-  gem 'faker'
   gem 'ruby-progressbar'
   gem 'pry'
   gem 'rspec-collection_matchers'
+  gem 'rack-mini-profiler'
 end
 
 group :test do
