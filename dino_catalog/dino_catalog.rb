@@ -1,8 +1,37 @@
 class DinoDex
-	attr_accessor :collection
+	attr_accessor :collection, :search_collection
 
 	def initialize(dinos)
 		@collection = dinos
+		@search_collection = dinos
+	end
+
+	def bipeds
+		@search_collection = @search_collection.select{|dino| dino.biped?}
+		self
+	end
+
+	def carnivores
+		@search_collection = @search_collection.select{|dino| dino.carnivore?}
+		self
+	end
+
+	def period(period)
+	  @search_collection = @search_collection.select{|dino| dino.period?(period)}
+		self
+	end
+
+	def size(str)
+		if str.downcase == "big"
+			@search_collection = @search_collection.select{|dino| dino.big?}
+		elsif str.downcase == "small"
+			@search_collection = @search_collection.select{|dino| !dino.big?}
+		end
+		self
+	end
+
+	def reset_search
+		search_collection = collection
 	end
 
 	# def self.export(type)
@@ -30,7 +59,7 @@ class Dinosaur
 		%w(Carnivore Insectivore Piscivore).include?(diet)
 	end
 
-	def Period?(in_period)
+	def period?(in_period)
 		period.include?(in_period)
 	end
 
@@ -92,4 +121,4 @@ require "csv"
 
 parser = CSVParser.new("dinodex.csv")
 dinodex = DinoDex.new(parser.create_dinos)
-puts dinodex.bipeds.period("Cretaceous")
+p dinodex.bipeds.size("big").search_collection
