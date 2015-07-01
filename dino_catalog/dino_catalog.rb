@@ -34,6 +34,14 @@ class DinoDex
 		search_collection = collection
 	end
 
+	def print_dino
+		""
+	end
+
+	def find_dino_by(attribute,value)
+		@collection.find{|obj| obj.send("#{attribute}") == value}
+	end
+
 	# def self.export(type)
 		
 	# end
@@ -122,3 +130,4 @@ require "csv"
 parser = CSVParser.new("dinodex.csv")
 dinodex = DinoDex.new(parser.create_dinos)
 p dinodex.bipeds.size("big").search_collection
+p dinodex.find_dino_by("name", "Albertosaurus")
